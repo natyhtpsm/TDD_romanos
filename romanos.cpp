@@ -48,24 +48,36 @@ int romanos_para_decimal(const char* num_romano) {
   int resultado = 0;
   int tamanho = std::string(num_romano).length();
   int repeticao = 1;
+
   for (int i = 0; i < tamanho; i++) {
     int valor_atual = valor_romano(num_romano[i]);
-    if (valor_atual == -1) {
+      if (valor_atual == -1) {
         return -1;
-    }
-    if (i > 0 && num_romano[i] == num_romano[i - 1]) {
-      repeticao++;
+      }
+
+        if (i > 0 && num_romano[i] == num_romano[i - 1]) {
+            repeticao++;
             if (repeticao > 3) {
                 return -1;
             }
         } else {
             repeticao = 1;
         }
+
         if (i < tamanho - 1 && valor_romano(num_romano[i + 1]) > valor_atual) {
             resultado -= valor_atual;
         } else {
             resultado += valor_atual;
         }
-  }
+    }
+
+    std::string romano_convertido;
+    for (int i = 0; i < resultado; i++) {
+        romano_convertido += valor_decimal(resultado);
+    }
+    if (romano_convertido != num_romano) {
+        return -1;
+    }
+
   return resultado;
 }

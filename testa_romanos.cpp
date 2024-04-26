@@ -76,3 +76,18 @@ TEST_CASE("Numeros romanos invalidos", "[romanos]" ) {
     REQUIRE(romanos_para_decimal("DD") == -1);
 }
 
+TEST_CASE("Numeros romanos - algarismos compostos", "[romanos]") {
+    REQUIRE(romanos_para_decimal("II") == 2);
+    REQUIRE(romanos_para_decimal("IV") == 4);
+    REQUIRE(romanos_para_decimal("VI") == 6);
+    REQUIRE(romanos_para_decimal("IX") == 9);
+    REQUIRE(romanos_para_decimal("XI") == 11);
+    REQUIRE(romanos_para_decimal("XX") == 20);
+    REQUIRE(romanos_para_decimal("XL") == 40);
+    REQUIRE(romanos_para_decimal("XC") == 90);
+    REQUIRE(romanos_para_decimal("CL") == 150);
+    REQUIRE(romanos_para_decimal("CD") == 400);
+    REQUIRE(romanos_para_decimal("CM") == 900);
+    REQUIRE(romanos_para_decimal("MC") == 1100);
+    REQUIRE(romanos_para_decimal("MMM") == 3000);
+}
